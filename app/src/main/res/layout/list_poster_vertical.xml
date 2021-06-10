@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_list"
+    android:orientation="vertical"
+    android:layout_width="220dp"
+    android:layout_height="120dp"
+    android:layout_marginEnd="15dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp">
+
+    <ImageView
+        android:id="@+id/iv_movie_poster"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="poster vetical" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/overlay"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="asdasd"
+        android:gravity="bottom"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_movie_release"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="10dp"
+        android:text="20"
+        android:gravity="bottom"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp" />
+
+</androidx.cardview.widget.CardView>

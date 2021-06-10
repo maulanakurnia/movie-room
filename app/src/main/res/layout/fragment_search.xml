@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/cardview_light_background"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="30dp"
+        android:layout_marginTop="20dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/list_poster_complete"
+        android:layout_below="@id/search_keyword"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"/>
+
+    <EditText
+        android:id="@+id/search_keyword"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:autofillHints="@android:string/autofill"
+        android:background="@drawable/custom_input_search"
+        android:paddingStart="50dp"
+        android:hint="search movie"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:minHeight="40dp"
+        android:paddingHorizontal="15dp"
+        android:textColor="#000"
+        android:textColorHint="#A4A4A4"
+        android:textSize="15sp"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+        android:id="@+id/search_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/search_keyword"
+        android:layout_alignBottom="@+id/search_keyword"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="6dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/ic_arrow_back"
+        app:tint="#6C6C6C"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

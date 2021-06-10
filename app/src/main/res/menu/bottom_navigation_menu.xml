@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/movie"
+        android:enabled="true"
+        android:icon="@drawable/home_selector"
+        android:title="movie"/>
+
+    <item
+        android:id="@+id/favorite"
+        android:enabled="true"
+        android:icon="@drawable/favorite_selector"
+        android:title="Favorite" />
+
+    <item
+        android:id="@+id/setting"
+        android:enabled="true"
+        android:icon="@drawable/setting_selector"
+        android:title="Setting" />
+</menu>

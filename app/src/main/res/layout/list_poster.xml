@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_list"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="15dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    android:checkable="true"
+    android:focusable="true"
+    app:checkedIcon="@drawable/ic_baseline_radio_button_checked"
+    app:checkedIconTint="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_movie_poster"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_launcher_background"
+        android:layout_width="151dp"
+        android:layout_height="220dp"
+        android:scaleType="centerCrop" />
+
+    <ImageView
+        android:id="@+id/poster_overlay"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/overlay"/>
+
+</com.google.android.material.card.MaterialCardView>
