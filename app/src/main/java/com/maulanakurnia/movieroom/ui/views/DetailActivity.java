@@ -32,6 +32,7 @@ import com.maulanakurnia.movieroom.ui.viewmodel.DetailsViewModel;
 import com.maulanakurnia.movieroom.ui.viewmodel.HomeViewModel;
 import com.maulanakurnia.movieroom.ui.views.fragment.MovieFragament;
 import com.maulanakurnia.movieroom.utils.Constants;
+import com.maulanakurnia.movieroom.utils.SharedPrefConfig;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -67,6 +68,7 @@ public class DetailActivity extends AppCompatActivity {
     protected DetailsViewModel detailsViewModel;
     protected Boolean inFavList = false;
     protected MaterialButton btnFavorite;
+    private SharedPrefConfig prefConfig;
 
     public DetailActivity() { }
 
@@ -75,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         homeViewModel       = new ViewModelProvider(this).get(HomeViewModel.class);
-
+        prefConfig          = new SharedPrefConfig(getApplicationContext());
         initViews();
         initAdapter();
         initRecyclerview();
@@ -189,6 +191,7 @@ public class DetailActivity extends AppCompatActivity {
                             results.getVote_count(),
                             results.getRuntime()
                     );
+                    favorite.setId_user(prefConfig.readLoginUserID());
 
                     detailsViewModel.addFavorite(favorite);
                     btnFavorite.setIconResource(R.drawable.ic_filled_love);
@@ -211,7 +214,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
     }
-    
+
     private void setGenres(List<Genre> genresList){
         for(int i = 0; i< genresList.size(); i++){
             genres.add(genresList.get(i).getName());

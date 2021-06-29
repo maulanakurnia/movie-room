@@ -25,8 +25,8 @@ public interface FavoriteDao {
     @Query("DELETE FROM favorite")
     void clearFavoriteList();
 
-    @Query("SELECT * FROM favorite")
-    LiveData<List<Favorite>> getFavoriteList();
+    @Query("SELECT * FROM favorite WHERE id_user = :id")
+    LiveData<List<Favorite>> getFavoriteList(long id);
 
     @Query("SELECT * FROM favorite WHERE id = :id ")
     LiveData<Favorite> get(int id);

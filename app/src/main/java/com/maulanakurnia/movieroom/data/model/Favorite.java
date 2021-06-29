@@ -2,15 +2,21 @@ package com.maulanakurnia.movieroom.data.model;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
+
+import static androidx.room.ForeignKey.CASCADE;
 
 /**
  * Created by Maulana Kurnia on 6/1/2021
  * Keep Coding & Stay Awesome!
  **/
-@Entity(tableName = "favorite")
+@Entity(tableName = "favorite", foreignKeys = @ForeignKey(entity = User.class,
+        parentColumns = "id",
+        childColumns = "id_user",
+        onDelete = CASCADE))
 public class Favorite {
 
     @PrimaryKey(autoGenerate = true)
@@ -19,6 +25,7 @@ public class Favorite {
     private Integer runtime, vote_count;
     private String poster_path,overview,release_date,title,backdrop_path;
     private Boolean selected;
+    private Integer id_user;
 
     public Boolean getSelected() {
         return selected;
@@ -101,5 +108,13 @@ public class Favorite {
 
     public void setRuntime(Integer runtime) {
         this.runtime = runtime;
+    }
+
+    public Integer getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(Integer id_user) {
+        this.id_user = id_user;
     }
 }

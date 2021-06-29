@@ -24,6 +24,7 @@ import com.maulanakurnia.movieroom.data.model.Favorite;
 import com.maulanakurnia.movieroom.ui.adapter.FavoriteAdapter;
 import com.maulanakurnia.movieroom.ui.viewmodel.DetailsViewModel;
 import com.maulanakurnia.movieroom.ui.viewmodel.HomeViewModel;
+import com.maulanakurnia.movieroom.utils.SharedPrefConfig;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -44,6 +45,7 @@ public class FavoriteFragment extends Fragment {
     private TextView placeholder;
     protected RecyclerView rv_movie_favorite;
     protected FloatingActionButton fa_delete;
+    protected SharedPrefConfig prefConfig;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,7 @@ public class FavoriteFragment extends Fragment {
         fa_delete           = view.findViewById(R.id.delete_favorite);
         rv_movie_favorite   = view.findViewById(R.id.rv_movie_favorite);
         placeholder         = view.findViewById(R.id.placeHolderText);
+        prefConfig          = new SharedPrefConfig(requireContext().getApplicationContext());
 
         fa_delete.setOnClickListener(view1 -> {
             detailsViewModel.clearWishList();
@@ -91,7 +94,7 @@ public class FavoriteFragment extends Fragment {
     }
 
     private void onObserveData() {
-        homeViewModel.getAllFavorite().observe(getViewLifecycleOwner(), favorites -> {
+        homeViewModel.getAllFavorite(prefConfig.readLoginUserID()).observe(getViewLifecycleOwner(), favorites -> {
             if(favorites.size() == 0) {
                 placeholder.setVisibility(View.VISIBLE);
                 fa_delete.setVisibility(View.GONE);

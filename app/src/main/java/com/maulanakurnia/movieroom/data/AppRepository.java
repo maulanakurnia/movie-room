@@ -35,14 +35,12 @@ public class AppRepository {
     private final UserDao userDao;
     private final FavoriteDao favoriteDao;
     private final LiveData<List<User>> listUser;
-    private final LiveData<List<Favorite>> listFavorite;
 
     public AppRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         userDao = db.userDao();
         listUser = userDao.getAll();
         favoriteDao = db.favoriteDao();
-        listFavorite = favoriteDao.getFavoriteList();
     }
 
     // -- User
@@ -72,8 +70,8 @@ public class AppRepository {
     }
 
     // -- Favorite
-    public LiveData<List<Favorite>> getAllFavorite() {
-        return listFavorite;
+    public LiveData<List<Favorite>> getAllFavorite(long id) {
+        return favoriteDao.getFavoriteList(id);
     }
     public LiveData<Favorite> getFavorite(int id) {
         return favoriteDao.get(id);
@@ -90,7 +88,6 @@ public class AppRepository {
     public void clearFavorite() {
         AppDatabase.databaseWriteExecutor.execute(favoriteDao::clearFavoriteList);
     }
-
 
     // -- API
     private final ApiService apiService = new ApiService();

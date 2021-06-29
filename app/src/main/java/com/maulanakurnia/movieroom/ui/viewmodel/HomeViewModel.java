@@ -41,17 +41,15 @@ public class HomeViewModel extends AndroidViewModel {
 
     protected AppRepository repository;
     public final LiveData<List<User>> listUser;
-    public final LiveData<List<Favorite>> listFavorite;
 
     public HomeViewModel(Application application) {
         super(application);
         repository          = new AppRepository(application);
         listUser            = repository.getAllUser();
-        listFavorite        = repository.getAllFavorite();
     }
 
-    public final LiveData<List<Favorite>> getAllFavorite() {
-        return listFavorite;
+    public final LiveData<List<Favorite>> getAllFavorite(long user_id) {
+        return repository.getAllFavorite(user_id);
     }
 
     public final LiveData<Movie.Results> getMovie(int id) {

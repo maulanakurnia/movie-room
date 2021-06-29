@@ -20,17 +20,15 @@ import java.util.List;
 public class DetailsViewModel extends AndroidViewModel {
 
     protected AppRepository repository;
-    public final LiveData<List<Favorite>> favoriteList;
 
     public DetailsViewModel(@NonNull @NotNull Application application) {
         super(application);
 
         this.repository = new AppRepository(application);
-        this.favoriteList = repository.getAllFavorite();
     }
 
-    public LiveData<List<Favorite>> getAllFavorite() {
-        return favoriteList;
+    public LiveData<List<Favorite>> getAllFavorite(long user_id) {
+        return repository.getAllFavorite(user_id);
     }
 
     public LiveData<Favorite> getFavoriteList(int id) {
